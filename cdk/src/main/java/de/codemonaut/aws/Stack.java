@@ -1,4 +1,4 @@
-package de.codemonaut;
+package de.codemonaut.aws;
 
 import software.amazon.awscdk.StackProps;
 import software.constructs.Construct;

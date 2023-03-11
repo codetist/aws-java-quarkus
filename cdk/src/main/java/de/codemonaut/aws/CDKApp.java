@@ -1,4 +1,4 @@
-package de.codemonaut;
+package de.codemonaut.aws;
 
 import software.amazon.awscdk.App;
 import software.amazon.awscdk.Environment;
