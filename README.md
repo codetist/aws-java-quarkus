@@ -13,7 +13,7 @@ in Java. And AWS Lambdas in Java with [Quarkus](https://quarkus.io).
 ```shell
 mvn clean package
 cd cdk
-cd deploy
+cdk deploy
 ...
-cd destroy
+cdk destroy
 ```
