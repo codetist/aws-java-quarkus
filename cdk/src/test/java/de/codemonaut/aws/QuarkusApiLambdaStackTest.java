@@ -1,20 +1,19 @@
 package de.codemonaut.aws;
 
+import de.codemonaut.aws.lambda.QuarkusApiLambdaStack;
 import software.amazon.awscdk.App;
 import software.amazon.awscdk.assertions.Template;
 
-import java.io.IOException;
-
 import org.junit.jupiter.api.Test;
 
-public class StackTest {
+public class QuarkusApiLambdaStackTest {
 
   @Test
-  public void testStack() throws IOException {
+  public void testStack() {
     App app = new App();
-    Stack stack = new Stack(app, "test", null);
+    QuarkusApiLambdaStack quarkusApiLambdaStack = new QuarkusApiLambdaStack(app, "test", null, true);
 
-    Template template = Template.fromStack(stack);
+    Template template = Template.fromStack(quarkusApiLambdaStack);
 
     // template.hasResourceProperties("AWS::SQS::Queue", new HashMap<String, Number>() {{
     //  put("VisibilityTimeout", 300);

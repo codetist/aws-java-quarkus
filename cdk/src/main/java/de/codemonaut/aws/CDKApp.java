@@ -1,5 +1,6 @@
 package de.codemonaut.aws;
 
+import de.codemonaut.aws.apigateway.QuarkusApiLambdaGatewayStack;
 import software.amazon.awscdk.App;
 import software.amazon.awscdk.Environment;
 import software.amazon.awscdk.StackProps;
@@ -32,7 +33,12 @@ public class CDKApp {
 
     Tags.of(app).add("application", appName);
 
-    new Stack(app, stackId, createStackProperties());
+    // Deploy Lambda only
+    // new QuarkusApiLambdaStack(app, stackId, createStackProperties(), true);
+
+    // Deploy Lambda behind ApiGateway
+    new QuarkusApiLambdaGatewayStack(app, stackId, createStackProperties(), true);
+
     app.synth();
   }
 }

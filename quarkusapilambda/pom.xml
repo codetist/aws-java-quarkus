@@ -9,11 +9,11 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>lambdaapi</artifactId>
+  <artifactId>quarkusapilambda</artifactId>
 
   <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
@@ -48,17 +48,22 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- ApiGateways -->
+    <!-- These are conflicting dependencies, only one can be used -->
     <!-- https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html -->
+
     <!-- ApiGateway Http -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-amazon-lambda-http</artifactId>
     </dependency>
     <!-- ApiGateway Rest-->
-    <!--dependency>
+    <!--
+    <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-amazon-lambda-rest</artifactId>
-    </dependency-->
+    </dependency>
+    -->
   </dependencies>
 
   <build>

@@ -1,18 +1,12 @@
-# Welcome to your CDK Java project!
+# cdk
 
-This is a blank project for CDK development with Java.
+Java CDK Stack for deploying
+* [quarkusapilambda](../quarkusapilambda/README.md)
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Heavily inspired by https://github.com/AdamBien/aws-quarkus-lambda-cdk-plain
 
-It is a [Maven](https://maven.apache.org/) based project, so you can open this project with any Maven compatible Java IDE to build and run tests.
+### Features
 
-## Useful commands
-
- * `mvn package`     compile and run tests
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-Enjoy!
+* Uses [AWS Lambda SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
+* Deployment as Solo Lambda or behind API Gateway (HTTP or REST)
+* Deployment as Java Lambda only, no native Lambda deployment currently
