@@ -22,34 +22,39 @@ public class QuarkusApiLambda extends Construct {
   );
 
   private final static String lambdaHandler = "io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest";
-  private final int memory = 256;
+  private final int memory = 128;
   private final int timeout = 10;
 
   private IFunction function;
 
   public QuarkusApiLambda(Construct scope,
                           String functionName,
-                          boolean snapStart) {
+                          boolean useNative) {
     super(scope, "quarkusApiLambda");
 
     // 1. Create custom loggroup, otherwise AWS creates its own with default settings
     createLogGroup(functionName);
 
     // 2. Create function after loggroup has been created
-    this.function = createFunction(functionName, snapStart, memory, timeout);
-    if (snapStart) {
+    this.function = createFunction(functionName, useNative, memory, timeout);
+    if (!useNative) {
       Version version = setupSnapStart();
-      this.function = createAlias(version);
+      this.function = createSnapStartAlias(version);
     }
   }
 
   private IFunction createFunction(String functionName,
-                                   boolean snapStart,
+                                   boolean useNative,
                                    int memory,
                                    int timeout) {
-    Architecture architecture = snapStart?Architecture.X86_64:Architecture.ARM_64;
+
+    // SnapStart currently supports JAVA_11 on X86_x64 only
+    // https://docs.aws.amazon.com/de_de/lambda/latest/dg/snapstart.html
+    Runtime runtime = useNative?Runtime.PROVIDED_AL2:Runtime.JAVA_11;
+    Architecture architecture = Architecture.X86_64;
+
     return Function.Builder.create(this, functionName)
-      .runtime(Runtime.JAVA_11)
+      .runtime(runtime)
       .architecture(architecture)
       .code(Code.fromAsset("../quarkusapilambda/target/function.zip"))
       .handler(QuarkusApiLambda.lambdaHandler)
@@ -73,7 +78,7 @@ public class QuarkusApiLambda extends Construct {
       .build();
   }
 
-  private Alias createAlias(Version version) {
+  private Alias createSnapStartAlias(Version version) {
     return Alias.Builder.create(this, "SnapStartAlias")
       .aliasName("snapStart")
       .description("Alias required for SnapStart")

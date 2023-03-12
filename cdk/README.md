@@ -7,6 +7,6 @@ Heavily inspired by https://github.com/AdamBien/aws-quarkus-lambda-cdk-plain
 
 ### Features
 
-* Uses [AWS Lambda SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
+* Supports Native und Java 11 Quarkus executable
+* Uses [AWS Lambda SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html) (Java only)
 * Deployment as Solo Lambda or behind API Gateway (HTTP or REST)
-* Deployment as Java Lambda only, no native Lambda deployment currently

@@ -14,12 +14,12 @@ public class QuarkusApiLambdaStack extends Stack {
   public QuarkusApiLambdaStack(final Construct scope,
                                final String id,
                                final StackProps props,
-                               final boolean snapStart) {
+                               final boolean useNative) {
     super(scope, id, props);
 
     QuarkusApiLambda quarkusApiLambda = new QuarkusApiLambda(this,
       QuarkusApiLambda.FUNCTION_NAME,
-      snapStart);
+      useNative);
     IFunction lambdaFunction = quarkusApiLambda.getFunction();
     FunctionUrlOptions lambdaFunctionUrlOptions = FunctionUrlOptions.builder()
         .authType(FunctionUrlAuthType.NONE)

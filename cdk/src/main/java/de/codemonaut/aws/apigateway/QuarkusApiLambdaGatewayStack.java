@@ -12,12 +12,12 @@ public class QuarkusApiLambdaGatewayStack extends Stack {
   public QuarkusApiLambdaGatewayStack(Construct scope,
                                       String id,
                                       StackProps props,
-                                      boolean snapStart) {
+                                      boolean useNative) {
     super(scope, id, props);
 
     QuarkusApiLambda quarkusApiLambda = new QuarkusApiLambda(this,
       QuarkusApiLambda.FUNCTION_NAME,
-      snapStart);
+      useNative);
     new QuarkusApiLambdaGateway(this,
       HTTP_GATEWAY,
       quarkusApiLambda.getFunction());

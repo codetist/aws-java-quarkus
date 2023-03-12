@@ -34,7 +34,7 @@ mvn package -Pnative
 mvn package -Pnative -Dquarkus.native.container-build=true
 ```
 
-*Building native images takes a few minutes. Even on fast machines!*
+*Building native executable takes a few minutes. Even on fast machines!*
 
 ### There is more
 
