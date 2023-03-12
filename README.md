@@ -5,8 +5,18 @@ in Java. And AWS Lambdas in Java with [Quarkus](https://quarkus.io).
 
 ### Modules
 
-* [cdk](cdk/README.md)
-* [quarkusapilambda](quarkusapilambda/README.md)
+* [cdk](cdk/)
+* [quarkusapilambda](quarkusapilambda/)
+
+#### CDK
+
+CDK Stack written in Java.
+
+#### quarkusapilambda
+
+Simple Java Microservice with a few dummy HTTP endpoints.
+Using [Quarkus](https://quarkus.io). Gets deployed into an AWS Lambda
+and optionally wired with an AWS API Gateway by via [cdk](cdk/)-Projekt.
 
 ### Build and deploy
 

@@ -2,7 +2,7 @@
 
 Sample HTTP-API application with a single endpoint `/note` providing a
 `GET` and `POST` method. The project uses [Quarkus](https://quarkus.io).
-This application is deployed as AWS Lambda by the `cdk`.
+This application is deployed as AWS Lambda by the [cdk](../cdk/).
 
 ### Dev-Mode
 
